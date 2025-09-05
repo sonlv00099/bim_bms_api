@@ -1,0 +1,412 @@
+2025-09-04 23:43:34.131 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-04 23:43:34.199 +07:00 [INF] Creating key {9adacb1e-fba1-4a49-b5a3-bfaf96fcdc8a} with creation date 2025-09-04 16:43:34Z, activation date 2025-09-04 16:43:34Z, and expiration date 2025-12-03 16:43:34Z.
+2025-09-04 23:43:34.231 +07:00 [INF] Writing data to file 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys\key-9adacb1e-fba1-4a49-b5a3-bfaf96fcdc8a.xml'.
+2025-09-04 23:43:39.023 +07:00 [INF] Now listening on: http://localhost:5132
+2025-09-04 23:43:39.025 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-04 23:43:39.027 +07:00 [INF] Hosting environment: Development
+2025-09-04 23:43:39.028 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-04 23:43:41.655 +07:00 [ERR] Failed executing DbCommand (827ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-04 23:43:41.736 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingAssetAPI.Data.ApplicationDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-09-04 23:43:41.754 +07:00 [ERR] Error in lock expiration service
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at BookingAssetAPI.Services.LockExpirationService.CheckAndUnlockExpiredLocks() in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 41
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 25
+2025-09-04 23:45:40.004 +07:00 [INF] Application is shutting down...
+2025-09-04 23:47:47.435 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-04 23:47:55.133 +07:00 [INF] Now listening on: http://localhost:5000
+2025-09-04 23:47:55.137 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-04 23:47:55.138 +07:00 [INF] Hosting environment: Development
+2025-09-04 23:47:55.139 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-04 23:47:55.659 +07:00 [ERR] Failed executing DbCommand (211ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-04 23:47:55.690 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingAssetAPI.Data.ApplicationDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-09-04 23:47:55.709 +07:00 [ERR] Error in lock expiration service
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at BookingAssetAPI.Services.LockExpirationService.CheckAndUnlockExpiredLocks() in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 41
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 25
+2025-09-04 23:49:06.192 +07:00 [INF] Application is shutting down...
+2025-09-04 23:49:55.471 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-04 23:49:59.772 +07:00 [INF] Now listening on: http://localhost:5132
+2025-09-04 23:49:59.779 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-04 23:49:59.780 +07:00 [INF] Hosting environment: Development
+2025-09-04 23:49:59.780 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-04 23:50:03.830 +07:00 [ERR] Failed executing DbCommand (1,001ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-04 23:50:03.869 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingAssetAPI.Data.ApplicationDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-09-04 23:50:03.973 +07:00 [ERR] Error in lock expiration service
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at BookingAssetAPI.Services.LockExpirationService.CheckAndUnlockExpiredLocks() in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 41
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 25
+2025-09-04 23:51:06.513 +07:00 [INF] Application is shutting down...
+2025-09-04 23:54:01.455 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-04 23:54:04.499 +07:00 [INF] Now listening on: http://localhost:5000
+2025-09-04 23:54:04.506 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-04 23:54:04.507 +07:00 [INF] Hosting environment: Development
+2025-09-04 23:54:04.508 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-04 23:54:05.610 +07:00 [ERR] Failed executing DbCommand (143ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-04 23:54:05.660 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingAssetAPI.Data.ApplicationDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-09-04 23:54:05.678 +07:00 [ERR] Error in lock expiration service
+MySqlConnector.MySqlException (0x80004005): Table 'ams.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at BookingAssetAPI.Services.LockExpirationService.CheckAndUnlockExpiredLocks() in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 41
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 25
+2025-09-04 23:55:04.270 +07:00 [INF] Application is shutting down...
+2025-09-04 23:57:00.654 +07:00 [INF] Executed DbCommand (160ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='ams' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-04 23:57:02.404 +07:00 [INF] Executed DbCommand (219ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:03.487 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='ams' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-04 23:57:03.655 +07:00 [INF] Executed DbCommand (110ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2025-09-04 23:57:03.671 +07:00 [INF] Applying migration '20250904165640_InitialCreate'.
+2025-09-04 23:57:04.210 +07:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+2025-09-04 23:57:04.475 +07:00 [INF] Executed DbCommand (263ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Projects` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Location` varchar(500) CHARACTER SET utf8mb4 NOT NULL,
+    `StartDate` datetime(6) NOT NULL,
+    `EndDate` datetime(6) NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Projects` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:05.193 +07:00 [INF] Executed DbCommand (716ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Users` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `PasswordHash` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `FirstName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `LastName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `PhoneNumber` varchar(20) CHARACTER SET utf8mb4 NULL,
+    `Role` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `IsLocked` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `LastLoginAt` datetime(6) NULL,
+    CONSTRAINT `PK_Users` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:05.423 +07:00 [INF] Executed DbCommand (228ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Buildings` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Floors` int NOT NULL,
+    `ProjectId` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Buildings` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Buildings_Projects_ProjectId` FOREIGN KEY (`ProjectId`) REFERENCES `Projects` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:05.775 +07:00 [INF] Executed DbCommand (350ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `ActivityLogs` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `ActivityType` int NOT NULL,
+    `EntityType` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `EntityId` int NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `OldValues` varchar(4000) CHARACTER SET utf8mb4 NULL,
+    `NewValues` varchar(4000) CHARACTER SET utf8mb4 NULL,
+    `IpAddress` varchar(45) CHARACTER SET utf8mb4 NULL,
+    `UserAgent` varchar(500) CHARACTER SET utf8mb4 NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_ActivityLogs` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_ActivityLogs_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:05.873 +07:00 [INF] Executed DbCommand (97ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PriceLists` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Type` int NOT NULL,
+    `Status` int NOT NULL,
+    `ProjectId` int NOT NULL,
+    `AgencyId` int NULL,
+    `PublishedAt` datetime(6) NULL,
+    `ClosedAt` datetime(6) NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_PriceLists` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PriceLists_Projects_ProjectId` FOREIGN KEY (`ProjectId`) REFERENCES `Projects` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_PriceLists_Users_AgencyId` FOREIGN KEY (`AgencyId`) REFERENCES `Users` (`Id`) ON DELETE SET NULL
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:06.210 +07:00 [INF] Executed DbCommand (336ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Units` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitNumber` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+    `Floor` int NOT NULL,
+    `Area` decimal(10,2) NOT NULL,
+    `Bedrooms` int NOT NULL,
+    `Bathrooms` int NOT NULL,
+    `Type` varchar(100) CHARACTER SET utf8mb4 NULL,
+    `Status` int NOT NULL,
+    `BuildingId` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Units` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Units_Buildings_BuildingId` FOREIGN KEY (`BuildingId`) REFERENCES `Buildings` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:06.415 +07:00 [INF] Executed DbCommand (203ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Locks` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitId` int NOT NULL,
+    `UserId` int NOT NULL,
+    `LockedAt` datetime(6) NOT NULL,
+    `ExpiresAt` datetime(6) NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `UnlockedAt` datetime(6) NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_Locks` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Locks_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Locks_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:06.576 +07:00 [INF] Executed DbCommand (159ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PriceListItems` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `PriceListId` int NOT NULL,
+    `UnitId` int NOT NULL,
+    `Price` decimal(15,2) NOT NULL,
+    `Discount` decimal(15,2) NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_PriceListItems` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PriceListItems_PriceLists_PriceListId` FOREIGN KEY (`PriceListId`) REFERENCES `PriceLists` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_PriceListItems_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:06.796 +07:00 [INF] Executed DbCommand (218ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Reservations` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitId` int NOT NULL,
+    `UserId` int NOT NULL,
+    `Status` int NOT NULL,
+    `ReservedAt` datetime(6) NOT NULL,
+    `ConfirmedAt` datetime(6) NULL,
+    `CancelledAt` datetime(6) NULL,
+    `CompletedAt` datetime(6) NULL,
+    `Price` decimal(15,2) NOT NULL,
+    `CustomerName` varchar(255) CHARACTER SET utf8mb4 NULL,
+    `CustomerPhone` varchar(20) CHARACTER SET utf8mb4 NULL,
+    `CustomerEmail` varchar(255) CHARACTER SET utf8mb4 NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_Reservations` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Reservations_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Reservations_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-04 23:57:06.872 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_ActivityLogs_UserId` ON `ActivityLogs` (`UserId`);
+2025-09-04 23:57:07.071 +07:00 [INF] Executed DbCommand (197ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Buildings_ProjectId` ON `Buildings` (`ProjectId`);
+2025-09-04 23:57:07.180 +07:00 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Locks_UnitId` ON `Locks` (`UnitId`);
+2025-09-04 23:57:07.361 +07:00 [INF] Executed DbCommand (179ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Locks_UserId` ON `Locks` (`UserId`);
+2025-09-04 23:57:07.492 +07:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceListItems_PriceListId` ON `PriceListItems` (`PriceListId`);
+2025-09-04 23:57:07.653 +07:00 [INF] Executed DbCommand (159ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceListItems_UnitId` ON `PriceListItems` (`UnitId`);
+2025-09-04 23:57:07.835 +07:00 [INF] Executed DbCommand (179ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceLists_AgencyId` ON `PriceLists` (`AgencyId`);
+2025-09-04 23:57:07.966 +07:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceLists_ProjectId` ON `PriceLists` (`ProjectId`);
+2025-09-04 23:57:08.262 +07:00 [INF] Executed DbCommand (294ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Reservations_UnitId` ON `Reservations` (`UnitId`);
+2025-09-04 23:57:08.511 +07:00 [INF] Executed DbCommand (247ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Reservations_UserId` ON `Reservations` (`UserId`);
+2025-09-04 23:57:08.836 +07:00 [INF] Executed DbCommand (324ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Units_BuildingId` ON `Units` (`BuildingId`);
+2025-09-04 23:57:09.029 +07:00 [INF] Executed DbCommand (190ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_Users_Email` ON `Users` (`Email`);
+2025-09-04 23:57:09.239 +07:00 [INF] Executed DbCommand (209ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20250904165640_InitialCreate', '8.0.0');

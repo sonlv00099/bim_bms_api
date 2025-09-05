@@ -1,0 +1,567 @@
+2025-09-05 00:00:33.349 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-05 00:00:38.423 +07:00 [INF] Now listening on: http://localhost:5132
+2025-09-05 00:00:38.425 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-05 00:00:38.428 +07:00 [INF] Hosting environment: Development
+2025-09-05 00:00:38.430 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-05 00:00:41.304 +07:00 [ERR] Failed executing DbCommand (710ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-05 00:00:41.339 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingAssetAPI.Data.ApplicationDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'bim_bms.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'bim_bms.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-09-05 00:00:41.356 +07:00 [ERR] Error in lock expiration service
+MySqlConnector.MySqlException (0x80004005): Table 'bim_bms.Locks' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 936
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at BookingAssetAPI.Services.LockExpirationService.CheckAndUnlockExpiredLocks() in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 41
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 25
+2025-09-05 00:01:36.479 +07:00 [INF] Application is shutting down...
+2025-09-05 00:02:12.830 +07:00 [INF] Executed DbCommand (165ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='bim_bms' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-05 00:02:13.997 +07:00 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:14.966 +07:00 [INF] Executed DbCommand (153ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='bim_bms' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-05 00:02:15.478 +07:00 [INF] Executed DbCommand (289ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2025-09-05 00:02:15.498 +07:00 [INF] Applying migration '20250904165640_InitialCreate'.
+2025-09-05 00:02:16.638 +07:00 [INF] Executed DbCommand (252ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+2025-09-05 00:02:16.728 +07:00 [INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Projects` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Location` varchar(500) CHARACTER SET utf8mb4 NOT NULL,
+    `StartDate` datetime(6) NOT NULL,
+    `EndDate` datetime(6) NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Projects` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:16.963 +07:00 [INF] Executed DbCommand (233ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Users` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `PasswordHash` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `FirstName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `LastName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `PhoneNumber` varchar(20) CHARACTER SET utf8mb4 NULL,
+    `Role` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `IsLocked` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `LastLoginAt` datetime(6) NULL,
+    CONSTRAINT `PK_Users` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:17.243 +07:00 [INF] Executed DbCommand (278ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Buildings` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Floors` int NOT NULL,
+    `ProjectId` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Buildings` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Buildings_Projects_ProjectId` FOREIGN KEY (`ProjectId`) REFERENCES `Projects` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:17.421 +07:00 [INF] Executed DbCommand (174ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `ActivityLogs` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `ActivityType` int NOT NULL,
+    `EntityType` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `EntityId` int NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `OldValues` varchar(4000) CHARACTER SET utf8mb4 NULL,
+    `NewValues` varchar(4000) CHARACTER SET utf8mb4 NULL,
+    `IpAddress` varchar(45) CHARACTER SET utf8mb4 NULL,
+    `UserAgent` varchar(500) CHARACTER SET utf8mb4 NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_ActivityLogs` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_ActivityLogs_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:17.643 +07:00 [INF] Executed DbCommand (218ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PriceLists` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` varchar(1000) CHARACTER SET utf8mb4 NULL,
+    `Type` int NOT NULL,
+    `Status` int NOT NULL,
+    `ProjectId` int NOT NULL,
+    `AgencyId` int NULL,
+    `PublishedAt` datetime(6) NULL,
+    `ClosedAt` datetime(6) NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_PriceLists` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PriceLists_Projects_ProjectId` FOREIGN KEY (`ProjectId`) REFERENCES `Projects` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_PriceLists_Users_AgencyId` FOREIGN KEY (`AgencyId`) REFERENCES `Users` (`Id`) ON DELETE SET NULL
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:17.745 +07:00 [INF] Executed DbCommand (98ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Units` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitNumber` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+    `Floor` int NOT NULL,
+    `Area` decimal(10,2) NOT NULL,
+    `Bedrooms` int NOT NULL,
+    `Bathrooms` int NOT NULL,
+    `Type` varchar(100) CHARACTER SET utf8mb4 NULL,
+    `Status` int NOT NULL,
+    `BuildingId` int NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Units` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Units_Buildings_BuildingId` FOREIGN KEY (`BuildingId`) REFERENCES `Buildings` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:17.864 +07:00 [INF] Executed DbCommand (115ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Locks` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitId` int NOT NULL,
+    `UserId` int NOT NULL,
+    `LockedAt` datetime(6) NOT NULL,
+    `ExpiresAt` datetime(6) NOT NULL,
+    `IsActive` tinyint(1) NOT NULL,
+    `UnlockedAt` datetime(6) NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_Locks` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Locks_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Locks_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:18.051 +07:00 [INF] Executed DbCommand (185ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PriceListItems` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `PriceListId` int NOT NULL,
+    `UnitId` int NOT NULL,
+    `Price` decimal(15,2) NOT NULL,
+    `Discount` decimal(15,2) NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_PriceListItems` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PriceListItems_PriceLists_PriceListId` FOREIGN KEY (`PriceListId`) REFERENCES `PriceLists` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_PriceListItems_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:18.305 +07:00 [INF] Executed DbCommand (252ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Reservations` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UnitId` int NOT NULL,
+    `UserId` int NOT NULL,
+    `Status` int NOT NULL,
+    `ReservedAt` datetime(6) NOT NULL,
+    `ConfirmedAt` datetime(6) NULL,
+    `CancelledAt` datetime(6) NULL,
+    `CompletedAt` datetime(6) NULL,
+    `Price` decimal(15,2) NOT NULL,
+    `CustomerName` varchar(255) CHARACTER SET utf8mb4 NULL,
+    `CustomerPhone` varchar(20) CHARACTER SET utf8mb4 NULL,
+    `CustomerEmail` varchar(255) CHARACTER SET utf8mb4 NULL,
+    `Notes` varchar(500) CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_Reservations` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Reservations_Units_UnitId` FOREIGN KEY (`UnitId`) REFERENCES `Units` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Reservations_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-09-05 00:02:18.621 +07:00 [INF] Executed DbCommand (314ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_ActivityLogs_UserId` ON `ActivityLogs` (`UserId`);
+2025-09-05 00:02:18.844 +07:00 [INF] Executed DbCommand (221ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Buildings_ProjectId` ON `Buildings` (`ProjectId`);
+2025-09-05 00:02:19.156 +07:00 [INF] Executed DbCommand (310ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Locks_UnitId` ON `Locks` (`UnitId`);
+2025-09-05 00:02:19.531 +07:00 [INF] Executed DbCommand (373ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Locks_UserId` ON `Locks` (`UserId`);
+2025-09-05 00:02:19.667 +07:00 [INF] Executed DbCommand (134ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceListItems_PriceListId` ON `PriceListItems` (`PriceListId`);
+2025-09-05 00:02:19.840 +07:00 [INF] Executed DbCommand (171ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceListItems_UnitId` ON `PriceListItems` (`UnitId`);
+2025-09-05 00:02:20.109 +07:00 [INF] Executed DbCommand (268ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceLists_AgencyId` ON `PriceLists` (`AgencyId`);
+2025-09-05 00:02:20.360 +07:00 [INF] Executed DbCommand (248ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PriceLists_ProjectId` ON `PriceLists` (`ProjectId`);
+2025-09-05 00:02:20.544 +07:00 [INF] Executed DbCommand (182ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Reservations_UnitId` ON `Reservations` (`UnitId`);
+2025-09-05 00:02:20.800 +07:00 [INF] Executed DbCommand (251ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Reservations_UserId` ON `Reservations` (`UserId`);
+2025-09-05 00:02:21.020 +07:00 [INF] Executed DbCommand (218ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Units_BuildingId` ON `Units` (`BuildingId`);
+2025-09-05 00:02:21.351 +07:00 [INF] Executed DbCommand (329ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_Users_Email` ON `Users` (`Email`);
+2025-09-05 00:02:21.490 +07:00 [INF] Executed DbCommand (137ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20250904165640_InitialCreate', '8.0.0');
+2025-09-05 00:07:06.272 +07:00 [INF] Executed DbCommand (1,127ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='bim_bms' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-05 00:07:09.261 +07:00 [INF] Executed DbCommand (356ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='bim_bms' AND TABLE_NAME='__EFMigrationsHistory';
+2025-09-05 00:07:09.814 +07:00 [INF] Executed DbCommand (410ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2025-09-05 00:07:09.830 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-09-05 00:07:10.126 +07:00 [INF] Executed DbCommand (98ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`)
+2025-09-05 00:07:12.819 +07:00 [INF] Executed DbCommand (624ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 255), @p2='?' (Size = 100), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime), @p6='?' (Size = 100), @p7='?' (Size = 4000), @p8='?' (Size = 20), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime), @p11='?' (Size = 255), @p12='?' (Size = 100), @p13='?' (DbType = Boolean), @p14='?' (DbType = Boolean), @p15='?' (DbType = DateTime), @p16='?' (Size = 100), @p17='?' (Size = 4000), @p18='?' (Size = 20), @p19='?' (DbType = Int32), @p20='?' (DbType = DateTime), @p21='?' (Size = 255), @p22='?' (Size = 100), @p23='?' (DbType = Boolean), @p24='?' (DbType = Boolean), @p25='?' (DbType = DateTime), @p26='?' (Size = 100), @p27='?' (Size = 4000), @p28='?' (Size = 20), @p29='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Users` (`CreatedAt`, `Email`, `FirstName`, `IsActive`, `IsLocked`, `LastLoginAt`, `LastName`, `PasswordHash`, `PhoneNumber`, `Role`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+SELECT `Id`
+FROM `Users`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Users` (`CreatedAt`, `Email`, `FirstName`, `IsActive`, `IsLocked`, `LastLoginAt`, `LastName`, `PasswordHash`, `PhoneNumber`, `Role`)
+VALUES (@p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+SELECT `Id`
+FROM `Users`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Users` (`CreatedAt`, `Email`, `FirstName`, `IsActive`, `IsLocked`, `LastLoginAt`, `LastName`, `PasswordHash`, `PhoneNumber`, `Role`)
+VALUES (@p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29);
+SELECT `Id`
+FROM `Users`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:13.702 +07:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 1000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (Size = 500), @p5='?' (Size = 255), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Projects` (`CreatedAt`, `Description`, `EndDate`, `IsActive`, `Location`, `Name`, `StartDate`, `UpdatedAt`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT `Id`
+FROM `Projects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:14.019 +07:00 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 1000), @p2='?' (DbType = Int32), @p3='?' (DbType = Boolean), @p4='?' (Size = 255), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Buildings` (`CreatedAt`, `Description`, `Floors`, `IsActive`, `Name`, `ProjectId`, `UpdatedAt`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Buildings`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:15.827 +07:00 [INF] Executed DbCommand (1,090ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (Size = 50), @p10='?' (DbType = DateTime), @p11='?' (DbType = Decimal), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime), @p16='?' (DbType = Int32), @p17='?' (DbType = Boolean), @p18='?' (DbType = Int32), @p19='?' (Size = 100), @p20='?' (Size = 50), @p21='?' (DbType = DateTime), @p22='?' (DbType = Decimal), @p23='?' (DbType = Int32), @p24='?' (DbType = Int32), @p25='?' (DbType = Int32), @p26='?' (DbType = DateTime), @p27='?' (DbType = Int32), @p28='?' (DbType = Boolean), @p29='?' (DbType = Int32), @p30='?' (Size = 100), @p31='?' (Size = 50), @p32='?' (DbType = DateTime), @p33='?' (DbType = Decimal), @p34='?' (DbType = Int32), @p35='?' (DbType = Int32), @p36='?' (DbType = Int32), @p37='?' (DbType = DateTime), @p38='?' (DbType = Int32), @p39='?' (DbType = Boolean), @p40='?' (DbType = Int32), @p41='?' (Size = 100), @p42='?' (Size = 50), @p43='?' (DbType = DateTime), @p44='?' (DbType = Decimal), @p45='?' (DbType = Int32), @p46='?' (DbType = Int32), @p47='?' (DbType = Int32), @p48='?' (DbType = DateTime), @p49='?' (DbType = Int32), @p50='?' (DbType = Boolean), @p51='?' (DbType = Int32), @p52='?' (Size = 100), @p53='?' (Size = 50), @p54='?' (DbType = DateTime), @p55='?' (DbType = Decimal), @p56='?' (DbType = Int32), @p57='?' (DbType = Int32), @p58='?' (DbType = Int32), @p59='?' (DbType = DateTime), @p60='?' (DbType = Int32), @p61='?' (DbType = Boolean), @p62='?' (DbType = Int32), @p63='?' (Size = 100), @p64='?' (Size = 50), @p65='?' (DbType = DateTime), @p66='?' (DbType = Decimal), @p67='?' (DbType = Int32), @p68='?' (DbType = Int32), @p69='?' (DbType = Int32), @p70='?' (DbType = DateTime), @p71='?' (DbType = Int32), @p72='?' (DbType = Boolean), @p73='?' (DbType = Int32), @p74='?' (Size = 100), @p75='?' (Size = 50), @p76='?' (DbType = DateTime), @p77='?' (DbType = Decimal), @p78='?' (DbType = Int32), @p79='?' (DbType = Int32), @p80='?' (DbType = Int32), @p81='?' (DbType = DateTime), @p82='?' (DbType = Int32), @p83='?' (DbType = Boolean), @p84='?' (DbType = Int32), @p85='?' (Size = 100), @p86='?' (Size = 50), @p87='?' (DbType = DateTime), @p88='?' (DbType = Decimal), @p89='?' (DbType = Int32), @p90='?' (DbType = Int32), @p91='?' (DbType = Int32), @p92='?' (DbType = DateTime), @p93='?' (DbType = Int32), @p94='?' (DbType = Boolean), @p95='?' (DbType = Int32), @p96='?' (Size = 100), @p97='?' (Size = 50), @p98='?' (DbType = DateTime), @p99='?' (DbType = Decimal), @p100='?' (DbType = Int32), @p101='?' (DbType = Int32), @p102='?' (DbType = Int32), @p103='?' (DbType = DateTime), @p104='?' (DbType = Int32), @p105='?' (DbType = Boolean), @p106='?' (DbType = Int32), @p107='?' (Size = 100), @p108='?' (Size = 50), @p109='?' (DbType = DateTime), @p110='?' (DbType = Decimal), @p111='?' (DbType = Int32), @p112='?' (DbType = Int32), @p113='?' (DbType = Int32), @p114='?' (DbType = DateTime), @p115='?' (DbType = Int32), @p116='?' (DbType = Boolean), @p117='?' (DbType = Int32), @p118='?' (Size = 100), @p119='?' (Size = 50), @p120='?' (DbType = DateTime), @p121='?' (DbType = Decimal), @p122='?' (DbType = Int32), @p123='?' (DbType = Int32), @p124='?' (DbType = Int32), @p125='?' (DbType = DateTime), @p126='?' (DbType = Int32), @p127='?' (DbType = Boolean), @p128='?' (DbType = Int32), @p129='?' (Size = 100), @p130='?' (Size = 50), @p131='?' (DbType = DateTime), @p132='?' (DbType = Decimal), @p133='?' (DbType = Int32), @p134='?' (DbType = Int32), @p135='?' (DbType = Int32), @p136='?' (DbType = DateTime), @p137='?' (DbType = Int32), @p138='?' (DbType = Boolean), @p139='?' (DbType = Int32), @p140='?' (Size = 100), @p141='?' (Size = 50), @p142='?' (DbType = DateTime), @p143='?' (DbType = Decimal), @p144='?' (DbType = Int32), @p145='?' (DbType = Int32), @p146='?' (DbType = Int32), @p147='?' (DbType = DateTime), @p148='?' (DbType = Int32), @p149='?' (DbType = Boolean), @p150='?' (DbType = Int32), @p151='?' (Size = 100), @p152='?' (Size = 50), @p153='?' (DbType = DateTime), @p154='?' (DbType = Decimal), @p155='?' (DbType = Int32), @p156='?' (DbType = Int32), @p157='?' (DbType = Int32), @p158='?' (DbType = DateTime), @p159='?' (DbType = Int32), @p160='?' (DbType = Boolean), @p161='?' (DbType = Int32), @p162='?' (Size = 100), @p163='?' (Size = 50), @p164='?' (DbType = DateTime), @p165='?' (DbType = Decimal), @p166='?' (DbType = Int32), @p167='?' (DbType = Int32), @p168='?' (DbType = Int32), @p169='?' (DbType = DateTime), @p170='?' (DbType = Int32), @p171='?' (DbType = Boolean), @p172='?' (DbType = Int32), @p173='?' (Size = 100), @p174='?' (Size = 50), @p175='?' (DbType = DateTime), @p176='?' (DbType = Decimal), @p177='?' (DbType = Int32), @p178='?' (DbType = Int32), @p179='?' (DbType = Int32), @p180='?' (DbType = DateTime), @p181='?' (DbType = Int32), @p182='?' (DbType = Boolean), @p183='?' (DbType = Int32), @p184='?' (Size = 100), @p185='?' (Size = 50), @p186='?' (DbType = DateTime), @p187='?' (DbType = Decimal), @p188='?' (DbType = Int32), @p189='?' (DbType = Int32), @p190='?' (DbType = Int32), @p191='?' (DbType = DateTime), @p192='?' (DbType = Int32), @p193='?' (DbType = Boolean), @p194='?' (DbType = Int32), @p195='?' (Size = 100), @p196='?' (Size = 50), @p197='?' (DbType = DateTime), @p198='?' (DbType = Decimal), @p199='?' (DbType = Int32), @p200='?' (DbType = Int32), @p201='?' (DbType = Int32), @p202='?' (DbType = DateTime), @p203='?' (DbType = Int32), @p204='?' (DbType = Boolean), @p205='?' (DbType = Int32), @p206='?' (Size = 100), @p207='?' (Size = 50), @p208='?' (DbType = DateTime), @p209='?' (DbType = Decimal), @p210='?' (DbType = Int32), @p211='?' (DbType = Int32), @p212='?' (DbType = Int32), @p213='?' (DbType = DateTime), @p214='?' (DbType = Int32), @p215='?' (DbType = Boolean), @p216='?' (DbType = Int32), @p217='?' (Size = 100), @p218='?' (Size = 50), @p219='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p55, @p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p66, @p67, @p68, @p69, @p70, @p71, @p72, @p73, @p74, @p75, @p76);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p77, @p78, @p79, @p80, @p81, @p82, @p83, @p84, @p85, @p86, @p87);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p88, @p89, @p90, @p91, @p92, @p93, @p94, @p95, @p96, @p97, @p98);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p99, @p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, @p108, @p109);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p110, @p111, @p112, @p113, @p114, @p115, @p116, @p117, @p118, @p119, @p120);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p121, @p122, @p123, @p124, @p125, @p126, @p127, @p128, @p129, @p130, @p131);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p132, @p133, @p134, @p135, @p136, @p137, @p138, @p139, @p140, @p141, @p142);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p143, @p144, @p145, @p146, @p147, @p148, @p149, @p150, @p151, @p152, @p153);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p154, @p155, @p156, @p157, @p158, @p159, @p160, @p161, @p162, @p163, @p164);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p165, @p166, @p167, @p168, @p169, @p170, @p171, @p172, @p173, @p174, @p175);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p176, @p177, @p178, @p179, @p180, @p181, @p182, @p183, @p184, @p185, @p186);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p187, @p188, @p189, @p190, @p191, @p192, @p193, @p194, @p195, @p196, @p197);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p198, @p199, @p200, @p201, @p202, @p203, @p204, @p205, @p206, @p207, @p208);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Units` (`Area`, `Bathrooms`, `Bedrooms`, `BuildingId`, `CreatedAt`, `Floor`, `IsActive`, `Status`, `Type`, `UnitNumber`, `UpdatedAt`)
+VALUES (@p209, @p210, @p211, @p212, @p213, @p214, @p215, @p216, @p217, @p218, @p219);
+SELECT `Id`
+FROM `Units`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:18.018 +07:00 [INF] Executed DbCommand (135ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 1000), @p4='?' (Size = 255), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `PriceLists` (`AgencyId`, `ClosedAt`, `CreatedAt`, `Description`, `Name`, `ProjectId`, `PublishedAt`, `Status`, `Type`, `UpdatedAt`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+SELECT `Id`
+FROM `PriceLists`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:20.820 +07:00 [INF] Executed DbCommand (1,018ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Decimal), @p2='?' (Size = 500), @p3='?' (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?', @p9='?' (Size = 500), @p10='?' (DbType = Decimal), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = DateTime), @p14='?' (DbType = DateTime), @p15='?', @p16='?' (Size = 500), @p17='?' (DbType = Decimal), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = DateTime), @p21='?' (DbType = DateTime), @p22='?' (DbType = Decimal), @p23='?' (Size = 500), @p24='?' (DbType = Decimal), @p25='?' (DbType = Int32), @p26='?' (DbType = Int32), @p27='?' (DbType = DateTime), @p28='?' (DbType = DateTime), @p29='?', @p30='?' (Size = 500), @p31='?' (DbType = Decimal), @p32='?' (DbType = Int32), @p33='?' (DbType = Int32), @p34='?' (DbType = DateTime), @p35='?' (DbType = DateTime), @p36='?', @p37='?' (Size = 500), @p38='?' (DbType = Decimal), @p39='?' (DbType = Int32), @p40='?' (DbType = Int32), @p41='?' (DbType = DateTime), @p42='?' (DbType = DateTime), @p43='?' (DbType = Decimal), @p44='?' (Size = 500), @p45='?' (DbType = Decimal), @p46='?' (DbType = Int32), @p47='?' (DbType = Int32), @p48='?' (DbType = DateTime), @p49='?' (DbType = DateTime), @p50='?', @p51='?' (Size = 500), @p52='?' (DbType = Decimal), @p53='?' (DbType = Int32), @p54='?' (DbType = Int32), @p55='?' (DbType = DateTime), @p56='?' (DbType = DateTime), @p57='?', @p58='?' (Size = 500), @p59='?' (DbType = Decimal), @p60='?' (DbType = Int32), @p61='?' (DbType = Int32), @p62='?' (DbType = DateTime), @p63='?' (DbType = DateTime), @p64='?' (DbType = Decimal), @p65='?' (Size = 500), @p66='?' (DbType = Decimal), @p67='?' (DbType = Int32), @p68='?' (DbType = Int32), @p69='?' (DbType = DateTime), @p70='?' (DbType = DateTime), @p71='?', @p72='?' (Size = 500), @p73='?' (DbType = Decimal), @p74='?' (DbType = Int32), @p75='?' (DbType = Int32), @p76='?' (DbType = DateTime), @p77='?' (DbType = DateTime), @p78='?', @p79='?' (Size = 500), @p80='?' (DbType = Decimal), @p81='?' (DbType = Int32), @p82='?' (DbType = Int32), @p83='?' (DbType = DateTime), @p84='?' (DbType = DateTime), @p85='?' (DbType = Decimal), @p86='?' (Size = 500), @p87='?' (DbType = Decimal), @p88='?' (DbType = Int32), @p89='?' (DbType = Int32), @p90='?' (DbType = DateTime), @p91='?' (DbType = DateTime), @p92='?', @p93='?' (Size = 500), @p94='?' (DbType = Decimal), @p95='?' (DbType = Int32), @p96='?' (DbType = Int32), @p97='?' (DbType = DateTime), @p98='?' (DbType = DateTime), @p99='?', @p100='?' (Size = 500), @p101='?' (DbType = Decimal), @p102='?' (DbType = Int32), @p103='?' (DbType = Int32), @p104='?' (DbType = DateTime), @p105='?' (DbType = DateTime), @p106='?' (DbType = Decimal), @p107='?' (Size = 500), @p108='?' (DbType = Decimal), @p109='?' (DbType = Int32), @p110='?' (DbType = Int32), @p111='?' (DbType = DateTime), @p112='?' (DbType = DateTime), @p113='?', @p114='?' (Size = 500), @p115='?' (DbType = Decimal), @p116='?' (DbType = Int32), @p117='?' (DbType = Int32), @p118='?' (DbType = DateTime), @p119='?' (DbType = DateTime), @p120='?', @p121='?' (Size = 500), @p122='?' (DbType = Decimal), @p123='?' (DbType = Int32), @p124='?' (DbType = Int32), @p125='?' (DbType = DateTime), @p126='?' (DbType = DateTime), @p127='?' (DbType = Decimal), @p128='?' (Size = 500), @p129='?' (DbType = Decimal), @p130='?' (DbType = Int32), @p131='?' (DbType = Int32), @p132='?' (DbType = DateTime), @p133='?' (DbType = DateTime), @p134='?', @p135='?' (Size = 500), @p136='?' (DbType = Decimal), @p137='?' (DbType = Int32), @p138='?' (DbType = Int32), @p139='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p21, @p22, @p23, @p24, @p25, @p26, @p27);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p28, @p29, @p30, @p31, @p32, @p33, @p34);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p35, @p36, @p37, @p38, @p39, @p40, @p41);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p42, @p43, @p44, @p45, @p46, @p47, @p48);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p49, @p50, @p51, @p52, @p53, @p54, @p55);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p56, @p57, @p58, @p59, @p60, @p61, @p62);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p63, @p64, @p65, @p66, @p67, @p68, @p69);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p70, @p71, @p72, @p73, @p74, @p75, @p76);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p77, @p78, @p79, @p80, @p81, @p82, @p83);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p84, @p85, @p86, @p87, @p88, @p89, @p90);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p91, @p92, @p93, @p94, @p95, @p96, @p97);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p98, @p99, @p100, @p101, @p102, @p103, @p104);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p105, @p106, @p107, @p108, @p109, @p110, @p111);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p112, @p113, @p114, @p115, @p116, @p117, @p118);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p119, @p120, @p121, @p122, @p123, @p124, @p125);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p126, @p127, @p128, @p129, @p130, @p131, @p132);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `PriceListItems` (`CreatedAt`, `Discount`, `Notes`, `Price`, `PriceListId`, `UnitId`, `UpdatedAt`)
+VALUES (@p133, @p134, @p135, @p136, @p137, @p138, @p139);
+SELECT `Id`
+FROM `PriceListItems`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-09-05 00:07:22.170 +07:00 [INF] User profile is available. Using 'C:\Users\leson\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-09-05 00:07:23.039 +07:00 [INF] Now listening on: http://localhost:5132
+2025-09-05 00:07:23.042 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-05 00:07:23.042 +07:00 [INF] Hosting environment: Development
+2025-09-05 00:07:23.043 +07:00 [INF] Content root path: C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI
+2025-09-05 00:07:24.828 +07:00 [INF] Executed DbCommand (1,010ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-05 00:08:23.690 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger - null null
+2025-09-05 00:08:23.771 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger - 301 0 null 81.961ms
+2025-09-05 00:08:23.783 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/index.html - null null
+2025-09-05 00:08:23.869 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/index.html - 200 null text/html;charset=utf-8 86.0541ms
+2025-09-05 00:08:23.898 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui.css - null null
+2025-09-05 00:08:23.904 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui-bundle.js - null null
+2025-09-05 00:08:23.905 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui-standalone-preset.js - null null
+2025-09-05 00:08:23.935 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-09-05 00:08:23.935 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-09-05 00:08:23.940 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-09-05 00:08:23.950 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 44.9354ms
+2025-09-05 00:08:23.950 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui.css - 200 144929 text/css 51.3683ms
+2025-09-05 00:08:23.951 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 47.0569ms
+2025-09-05 00:08:26.817 +07:00 [INF] Executed DbCommand (967ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`ExpiresAt`, `l`.`IsActive`, `l`.`LockedAt`, `l`.`Notes`, `l`.`UnitId`, `l`.`UnlockedAt`, `l`.`UserId`, `u`.`Id`, `u`.`Area`, `u`.`Bathrooms`, `u`.`Bedrooms`, `u`.`BuildingId`, `u`.`CreatedAt`, `u`.`Floor`, `u`.`IsActive`, `u`.`Status`, `u`.`Type`, `u`.`UnitNumber`, `u`.`UpdatedAt`, `u0`.`Id`, `u0`.`CreatedAt`, `u0`.`Email`, `u0`.`FirstName`, `u0`.`IsActive`, `u0`.`IsLocked`, `u0`.`LastLoginAt`, `u0`.`LastName`, `u0`.`PasswordHash`, `u0`.`PhoneNumber`, `u0`.`Role`
+FROM `Locks` AS `l`
+INNER JOIN `Units` AS `u` ON `l`.`UnitId` = `u`.`Id`
+INNER JOIN `Users` AS `u0` ON `l`.`UserId` = `u0`.`Id`
+WHERE `l`.`IsActive` AND (`l`.`ExpiresAt` <= UTC_TIMESTAMP())
+2025-09-05 00:08:29.571 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/v1/swagger.json - null null
+2025-09-05 00:08:29.611 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5132/swagger/favicon-32x32.png - null null
+2025-09-05 00:08:29.644 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-09-05 00:08:29.663 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/favicon-32x32.png - 200 628 image/png 51.6343ms
+2025-09-05 00:08:29.826 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5132/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 255.9928ms
+2025-09-05 00:09:04.407 +07:00 [INF] Application is shutting down...
+2025-09-05 00:09:04.419 +07:00 [ERR] Error in lock expiration service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BookingAssetAPI.Services.LockExpirationService.ExecuteAsync(CancellationToken stoppingToken) in C:\Working\Sphinx\BIM\apps\api\BookingAssetAPI\Services\LockExpirationService.cs:line 26
